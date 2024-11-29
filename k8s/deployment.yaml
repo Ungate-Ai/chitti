@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chitti-deployment
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: chitti
+  template:
+    metadata:
+      labels:
+        app: chitti
+    spec:
+      containers:
+        - name: chitti-container
+          image: registry.digitalocean.com/ungate/chitti:development
+          ports:
+            - containerPort: 3000
+            - containerPort: 4000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          resources:
+            limits:
+              memory: "4Gi"  
+              cpu: "2"    
+            requests:
+              memory: "2Gi"  
+              cpu: "1"        
+      imagePullSecrets:
+        - name: docker-secret

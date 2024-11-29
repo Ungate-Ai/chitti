@@ -494,6 +494,19 @@ export interface Account {
 }
 
 /**
+ * Represents a character in db
+ * Stored Character as JSONB as the characterState is more efficient for jsonb/nosql
+ * Other approach is to store each field as a table like character_settings,
+ * character_knowledge, character_plugins, etc.
+ */
+export type CharacterTable = {
+    id: UUID;
+    name: string;
+    characterState: Character;
+    secretsIV?: Secrets;
+};
+
+/**
  * Room participant with account details
  */
 export interface Participant {
@@ -584,6 +597,13 @@ export enum Clients {
     TWITTER = "twitter",
     TELEGRAM = "telegram",
 }
+/**
+ * Configuration for an agent secrets
+ */
+export type Secrets = {
+    [key: string]: string;
+};
+
 /**
  * Configuration for an agent character
  */
@@ -947,7 +967,10 @@ export interface IAgentRuntime {
 
     messageManager: IMemoryManager;
     descriptionManager: IMemoryManager;
+    documentsManager: IMemoryManager;
+    knowledgeManager: IMemoryManager;
     loreManager: IMemoryManager;
+
     cacheManager: ICacheManager;
 
     services: Map<ServiceType, Service>;

@@ -1,30 +1,45 @@
-FROM node:23.1.0
-# Install pnpm globally
+FROM node:23.3.0
+
 RUN npm install -g pnpm@9.4.0
 
-# Set the working directory
 WORKDIR /app
 
-# Add configuration files and install dependencies
-ADD pnpm-workspace.yaml /app/pnpm-workspace.yaml
-ADD package.json /app/package.json
-ADD .npmrc /app/.npmrc
-ADD tsconfig.json /app/tsconfig.json
-ADD pnpm-lock.yaml /app/pnpm-lock.yaml
-RUN pnpm i
+COPY pnpm-workspace.yaml package.json .npmrc tsconfig.json pnpm-lock.yaml /app/
 
-# Add the documentation
-ADD docs /app/docs
-RUN pnpm i
+RUN pnpm install --frozen-lockfile
 
-# Add the rest of the application code
-ADD packages /app/packages
-RUN pnpm i
+COPY packages /app/packages
+COPY agent /app/agent
+COPY characters /app/characters
+COPY scripts /app/scripts
 
-# Add the environment variables
-ADD scripts /app/scripts
-ADD characters /app/characters
-ADD .env /app/.env
+COPY .env /app/.env
+COPY .env /app/agent/.env
 
-# Command to run the container
-CMD ["tail", "-f", "/dev/null"]
+RUN pnpm exec playwright install
+RUN apt-get update && apt-get install -y \
+    libnss3 \
+    libnspr4 \
+    libdbus-1-3 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2 \
+    libatspi2.0-0
+
+WORKDIR /app
+
+RUN pnpm run build
+
+EXPOSE 3000 4000
+
+HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
+
+CMD ["pnpm", "run", "start"]

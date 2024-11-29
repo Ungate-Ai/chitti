@@ -198,6 +198,7 @@ async function getLocalEmbedding(input: string): Promise<number[]> {
         const trimmedInput = trimTokens(input, 8000, "gpt-4o-mini");
         const embedding = await embeddingModel.queryEmbed(trimmedInput);
         return embedding;
+
         // eslint-disable-next-line
     } catch (_error) {
         elizaLogger.warn(
