@@ -7,7 +7,7 @@
         "start:all": "pnpm --filter \"@ai16z/agent\" start:all --isRoot",
         "start:service:all": "pnpm --filter \"@ai16z/agent\" start:service:all --isRoot",
         "stop:service:all": "pnpm --filter \"@ai16z/agent\" stop:service:all",
-        "start": "pnpm --filter \"@ai16z/agent\" start --isRoot",
+        "start": "dotenv -e .env -- pnpm --filter \"@ai16z/agent\" start --isRoot",
         "start:client": "pnpm --dir client start --isRoot",
         "dev": "bash ./scripts/dev.sh",
         "lint": "bash ./scripts/lint.sh",
