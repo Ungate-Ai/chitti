@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command:
+            - "sh"
+            - "-c"
+            - |
+              chown -R 1000:1000 /var/jenkins_home
+          volumeMounts:
+            - mountPath: /var/jenkins_home
+              name: jenkins-home
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          ports:
+            - containerPort: 8080  
+            - containerPort: 50000  
+          securityContext:
+            runAsUser: 0  
+            runAsGroup: 0 
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home  
+        - name: docker
+          image: docker:latest
+          ports:
+            - containerPort: 2375
+            - containerPort: 2376
+          securityContext:
+            privileged: true
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+          command: ["/bin/sh", "-c"]
+          args:
+            - "dockerd --host=tcp://0.0.0.0:2375 --host=unix:///var/run/docker.sock --tls=false"
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+      volumes:
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-pvc

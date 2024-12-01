@@ -14,4 +14,8 @@ spec:
       protocol: TCP
       port: 8080
       targetPort: 4000
+    - name: app-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
   type: LoadBalancer

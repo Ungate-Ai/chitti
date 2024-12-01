@@ -356,7 +356,7 @@ const startAgents = async () => {
         characters = await loadCharacters(charactersArg);
     }
 
-    const shouldFetchFromDb = process.env.FETCH_FROM_DB === "true";
+    const shouldFetchFromDb = false
 
     if (shouldFetchFromDb) {
         characters = await loadCharactersFromDb(charactersArg);
@@ -384,7 +384,7 @@ const startAgents = async () => {
     }
 
     elizaLogger.log("Chat started. Type 'exit' to quit.");
-    chat();
+
 };
 
 startAgents().catch((error) => {

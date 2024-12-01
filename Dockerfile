@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY pnpm-workspace.yaml package.json .npmrc tsconfig.json pnpm-lock.yaml /app/
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --force
 
 COPY packages /app/packages
 COPY agent /app/agent
@@ -16,7 +16,6 @@ COPY scripts /app/scripts
 COPY .env /app/.env
 COPY .env /app/agent/.env
 
-RUN pnpm exec playwright install
 RUN apt-get update && apt-get install -y \
     libnss3 \
     libnspr4 \
@@ -34,12 +33,12 @@ RUN apt-get update && apt-get install -y \
     libasound2 \
     libatspi2.0-0
 
+RUN pnpm exec playwright install
+
 WORKDIR /app
 
 RUN pnpm run build
 
 EXPOSE 3000 4000
-
-HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
 
 CMD ["pnpm", "run", "start"]
