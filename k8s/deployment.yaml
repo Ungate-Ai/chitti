@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: chitti-deployment
 spec:
-  replicas: 3 
+  replicas: 1
   selector:
     matchLabels:
       app: chitti
@@ -14,28 +14,26 @@ spec:
     spec:
       containers:
         - name: chitti-container
-          image: registry.digitalocean.com/ungate/chitti:development
+          image: registry.digitalocean.com/ungate/chitti-ungate:development
           ports:
             - containerPort: 3000
             - containerPort: 4000
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 3000
-            initialDelaySeconds: 10
-            periodSeconds: 5
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 3000
-            initialDelaySeconds: 10
-            periodSeconds: 5
           resources:
             limits:
-              memory: "4Gi"  
-              cpu: "2"    
+              memory: "4Gi"
+              cpu: "2"
             requests:
-              memory: "2Gi"  
-              cpu: "1"        
+              memory: "2Gi"
+              cpu: "1"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 60    
+            periodSeconds: 60          
+            failureThreshold: 10       
+            timeoutSeconds: 5         
+            successThreshold: 1       
+          imagePullPolicy: Always     
       imagePullSecrets:
         - name: docker-secret

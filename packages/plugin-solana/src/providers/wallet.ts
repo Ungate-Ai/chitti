@@ -294,7 +294,6 @@ const walletProvider: Provider = {
                     runtime.getSetting("WALLET_PUBLIC_KEY")
                 );
             } catch (error) {
-                console.error("Error creating PublicKey:", error);
                 return "";
             }
 
