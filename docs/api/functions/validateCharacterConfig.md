@@ -16,4 +16,4 @@ Validation function
 
 ## Defined in
 
-[packages/core/src/enviroment.ts:131](https://github.com/ai16z/eliza/blob/main/packages/core/src/enviroment.ts#L131)
+[packages/core/src/enviroment.ts:131](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/enviroment.ts#L131)

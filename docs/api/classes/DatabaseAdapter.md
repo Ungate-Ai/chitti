@@ -37,7 +37,7 @@ The database instance.
 
 #### Defined in
 
-[packages/core/src/database.ts:21](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L21)
+[packages/core/src/database.ts:21](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L21)
 
 ## Methods
 
@@ -65,7 +65,7 @@ A Promise that resolves to the Account object or null if not found.
 
 #### Defined in
 
-[packages/core/src/database.ts:27](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L27)
+[packages/core/src/database.ts:27](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L27)
 
 ***
 
@@ -93,7 +93,7 @@ A Promise that resolves when the account creation is complete.
 
 #### Defined in
 
-[packages/core/src/database.ts:34](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L34)
+[packages/core/src/database.ts:34](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L34)
 
 ***
 
@@ -131,7 +131,7 @@ A Promise that resolves to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:41](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L41)
+[packages/core/src/database.ts:41](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L41)
 
 ***
 
@@ -159,7 +159,7 @@ A Promise that resolves to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:49](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L49)
+[packages/core/src/database.ts:49](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L49)
 
 ***
 
@@ -181,7 +181,7 @@ A Promise that resolves to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:55](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L55)
+[packages/core/src/database.ts:55](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L55)
 
 ***
 
@@ -221,7 +221,7 @@ A Promise that resolves to an array of objects containing embeddings and levensh
 
 #### Defined in
 
-[packages/core/src/database.ts:62](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L62)
+[packages/core/src/database.ts:62](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L62)
 
 ***
 
@@ -257,7 +257,7 @@ A Promise that resolves when the log entry has been saved.
 
 #### Defined in
 
-[packages/core/src/database.ts:88](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L88)
+[packages/core/src/database.ts:88](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L88)
 
 ***
 
@@ -287,7 +287,7 @@ A Promise that resolves to an array of Actor objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:100](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L100)
+[packages/core/src/database.ts:100](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L100)
 
 ***
 
@@ -329,7 +329,7 @@ A Promise that resolves to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:107](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L107)
+[packages/core/src/database.ts:107](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L107)
 
 ***
 
@@ -361,7 +361,7 @@ A Promise that resolves when the goal status has been updated.
 
 #### Defined in
 
-[packages/core/src/database.ts:122](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L122)
+[packages/core/src/database.ts:122](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L122)
 
 ***
 
@@ -405,7 +405,7 @@ A Promise that resolves to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:133](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L133)
+[packages/core/src/database.ts:133](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L133)
 
 ***
 
@@ -441,7 +441,7 @@ A Promise that resolves when the memory has been created.
 
 #### Defined in
 
-[packages/core/src/database.ts:152](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L152)
+[packages/core/src/database.ts:152](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L152)
 
 ***
 
@@ -473,7 +473,7 @@ A Promise that resolves when the memory has been removed.
 
 #### Defined in
 
-[packages/core/src/database.ts:164](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L164)
+[packages/core/src/database.ts:164](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L164)
 
 ***
 
@@ -505,7 +505,7 @@ A Promise that resolves when all memories have been removed.
 
 #### Defined in
 
-[packages/core/src/database.ts:172](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L172)
+[packages/core/src/database.ts:172](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L172)
 
 ***
 
@@ -541,7 +541,7 @@ A Promise that resolves to the number of memories.
 
 #### Defined in
 
-[packages/core/src/database.ts:181](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L181)
+[packages/core/src/database.ts:181](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L181)
 
 ***
 
@@ -579,7 +579,7 @@ A Promise that resolves to an array of Goal objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:192](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L192)
+[packages/core/src/database.ts:192](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L192)
 
 ***
 
@@ -607,7 +607,7 @@ A Promise that resolves when the goal has been updated.
 
 #### Defined in
 
-[packages/core/src/database.ts:205](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L205)
+[packages/core/src/database.ts:205](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L205)
 
 ***
 
@@ -635,7 +635,7 @@ A Promise that resolves when the goal has been created.
 
 #### Defined in
 
-[packages/core/src/database.ts:212](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L212)
+[packages/core/src/database.ts:212](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L212)
 
 ***
 
@@ -663,7 +663,7 @@ A Promise that resolves when the goal has been removed.
 
 #### Defined in
 
-[packages/core/src/database.ts:219](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L219)
+[packages/core/src/database.ts:219](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L219)
 
 ***
 
@@ -691,7 +691,7 @@ A Promise that resolves when all goals have been removed.
 
 #### Defined in
 
-[packages/core/src/database.ts:226](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L226)
+[packages/core/src/database.ts:226](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L226)
 
 ***
 
@@ -719,7 +719,7 @@ A Promise that resolves to the room ID or null if not found.
 
 #### Defined in
 
-[packages/core/src/database.ts:233](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L233)
+[packages/core/src/database.ts:233](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L233)
 
 ***
 
@@ -747,7 +747,7 @@ A Promise that resolves to the UUID of the created room.
 
 #### Defined in
 
-[packages/core/src/database.ts:240](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L240)
+[packages/core/src/database.ts:240](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L240)
 
 ***
 
@@ -775,7 +775,7 @@ A Promise that resolves when the room has been removed.
 
 #### Defined in
 
-[packages/core/src/database.ts:247](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L247)
+[packages/core/src/database.ts:247](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L247)
 
 ***
 
@@ -803,7 +803,7 @@ A Promise that resolves to an array of room IDs.
 
 #### Defined in
 
-[packages/core/src/database.ts:254](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L254)
+[packages/core/src/database.ts:254](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L254)
 
 ***
 
@@ -831,7 +831,7 @@ A Promise that resolves to an array of room IDs.
 
 #### Defined in
 
-[packages/core/src/database.ts:261](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L261)
+[packages/core/src/database.ts:261](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L261)
 
 ***
 
@@ -863,7 +863,7 @@ A Promise that resolves to a boolean indicating success or failure.
 
 #### Defined in
 
-[packages/core/src/database.ts:269](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L269)
+[packages/core/src/database.ts:269](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L269)
 
 ***
 
@@ -895,7 +895,7 @@ A Promise that resolves to a boolean indicating success or failure.
 
 #### Defined in
 
-[packages/core/src/database.ts:277](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L277)
+[packages/core/src/database.ts:277](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L277)
 
 ***
 
@@ -925,7 +925,7 @@ A Promise that resolves to an array of Participant objects.
 
 ##### Defined in
 
-[packages/core/src/database.ts:284](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L284)
+[packages/core/src/database.ts:284](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L284)
 
 #### getParticipantsForAccount(userId)
 
@@ -951,7 +951,7 @@ A Promise that resolves to an array of Participant objects.
 
 ##### Defined in
 
-[packages/core/src/database.ts:291](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L291)
+[packages/core/src/database.ts:291](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L291)
 
 ***
 
@@ -979,7 +979,7 @@ A Promise that resolves to an array of UUIDs representing the participants.
 
 #### Defined in
 
-[packages/core/src/database.ts:298](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L298)
+[packages/core/src/database.ts:298](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L298)
 
 ***
 
@@ -1003,7 +1003,7 @@ A Promise that resolves to an array of UUIDs representing the participants.
 
 #### Defined in
 
-[packages/core/src/database.ts:300](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L300)
+[packages/core/src/database.ts:300](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L300)
 
 ***
 
@@ -1029,7 +1029,7 @@ A Promise that resolves to an array of UUIDs representing the participants.
 
 #### Defined in
 
-[packages/core/src/database.ts:304](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L304)
+[packages/core/src/database.ts:304](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L304)
 
 ***
 
@@ -1061,7 +1061,7 @@ A Promise that resolves to a boolean indicating success or failure of the creati
 
 #### Defined in
 
-[packages/core/src/database.ts:315](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L315)
+[packages/core/src/database.ts:315](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L315)
 
 ***
 
@@ -1093,7 +1093,7 @@ A Promise that resolves to the Relationship object or null if not found.
 
 #### Defined in
 
-[packages/core/src/database.ts:325](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L325)
+[packages/core/src/database.ts:325](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L325)
 
 ***
 
@@ -1123,4 +1123,4 @@ A Promise that resolves to an array of Relationship objects.
 
 #### Defined in
 
-[packages/core/src/database.ts:335](https://github.com/ai16z/eliza/blob/main/packages/core/src/database.ts#L335)
+[packages/core/src/database.ts:335](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/database.ts#L335)

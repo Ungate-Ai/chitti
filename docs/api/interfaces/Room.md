@@ -14,7 +14,7 @@ Unique identifier
 
 #### Defined in
 
-[packages/core/src/types.ts:512](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L512)
+[packages/core/src/types.ts:525](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L525)
 
 ***
 
@@ -26,4 +26,4 @@ Room participants
 
 #### Defined in
 
-[packages/core/src/types.ts:515](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L515)
+[packages/core/src/types.ts:528](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L528)

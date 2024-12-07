@@ -8,4 +8,4 @@ Type inference
 
 ## Defined in
 
-[packages/core/src/enviroment.ts:128](https://github.com/ai16z/eliza/blob/main/packages/core/src/enviroment.ts#L128)
+[packages/core/src/enviroment.ts:128](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/enviroment.ts#L128)

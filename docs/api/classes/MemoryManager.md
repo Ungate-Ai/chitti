@@ -36,7 +36,7 @@ The AgentRuntime instance associated with this manager.
 
 #### Defined in
 
-[packages/core/src/memory.ts:36](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L36)
+[packages/core/src/memory.ts:36](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L36)
 
 ## Properties
 
@@ -52,7 +52,7 @@ The AgentRuntime instance associated with this manager.
 
 #### Defined in
 
-[packages/core/src/memory.ts:23](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L23)
+[packages/core/src/memory.ts:23](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L23)
 
 ***
 
@@ -68,7 +68,7 @@ The name of the database table this manager operates on.
 
 #### Defined in
 
-[packages/core/src/memory.ts:28](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L28)
+[packages/core/src/memory.ts:28](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L28)
 
 ## Methods
 
@@ -102,7 +102,7 @@ Error if the memory content is empty
 
 #### Defined in
 
-[packages/core/src/memory.ts:55](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L55)
+[packages/core/src/memory.ts:55](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L55)
 
 ***
 
@@ -146,7 +146,7 @@ A Promise resolving to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/memory.ts:90](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L90)
+[packages/core/src/memory.ts:90](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L90)
 
 ***
 
@@ -168,7 +168,7 @@ A Promise resolving to an array of Memory objects.
 
 #### Defined in
 
-[packages/core/src/memory.ts:114](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L114)
+[packages/core/src/memory.ts:114](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L114)
 
 ***
 
@@ -216,7 +216,7 @@ A Promise resolving to an array of Memory objects that match the embedding.
 
 #### Defined in
 
-[packages/core/src/memory.ts:140](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L140)
+[packages/core/src/memory.ts:140](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L140)
 
 ***
 
@@ -248,7 +248,7 @@ A Promise that resolves when the operation completes.
 
 #### Defined in
 
-[packages/core/src/memory.ts:175](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L175)
+[packages/core/src/memory.ts:175](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L175)
 
 ***
 
@@ -272,7 +272,7 @@ A Promise that resolves when the operation completes.
 
 #### Defined in
 
-[packages/core/src/memory.ts:195](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L195)
+[packages/core/src/memory.ts:195](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L195)
 
 ***
 
@@ -294,7 +294,7 @@ A Promise that resolves when the operation completes.
 
 #### Defined in
 
-[packages/core/src/memory.ts:202](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L202)
+[packages/core/src/memory.ts:202](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L202)
 
 ***
 
@@ -322,7 +322,7 @@ A Promise that resolves when the operation completes.
 
 #### Defined in
 
-[packages/core/src/memory.ts:213](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L213)
+[packages/core/src/memory.ts:213](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L213)
 
 ***
 
@@ -350,7 +350,7 @@ A Promise that resolves when the operation completes.
 
 #### Defined in
 
-[packages/core/src/memory.ts:225](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L225)
+[packages/core/src/memory.ts:225](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L225)
 
 ***
 
@@ -382,4 +382,4 @@ A Promise resolving to the count of memories.
 
 #### Defined in
 
-[packages/core/src/memory.ts:238](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L238)
+[packages/core/src/memory.ts:238](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L238)

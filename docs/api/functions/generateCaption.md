@@ -26,4 +26,4 @@
 
 ## Defined in
 
-[packages/core/src/generation.ts:874](https://github.com/ai16z/eliza/blob/main/packages/core/src/generation.ts#L874)
+[packages/core/src/generation.ts:874](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/generation.ts#L874)

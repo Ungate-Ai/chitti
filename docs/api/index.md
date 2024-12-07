@@ -15,6 +15,7 @@
 - [FsCacheAdapter](classes/FsCacheAdapter.md)
 - [DbCacheAdapter](classes/DbCacheAdapter.md)
 - [CacheManager](classes/CacheManager.md)
+- [EncryptionUtil](classes/EncryptionUtil.md)
 - [DatabaseAdapter](classes/DatabaseAdapter.md)
 - [MemoryManager](classes/MemoryManager.md)
 - [AgentRuntime](classes/AgentRuntime.md)
@@ -23,6 +24,7 @@
 ## Interfaces
 
 - [ICacheAdapter](interfaces/ICacheAdapter.md)
+- [EncryptedData](interfaces/EncryptedData.md)
 - [GenerationOptions](interfaces/GenerationOptions.md)
 - [Content](interfaces/Content.md)
 - [ActionExample](interfaces/ActionExample.md)
@@ -64,9 +66,11 @@
 - [Handler](type-aliases/Handler.md)
 - [HandlerCallback](type-aliases/HandlerCallback.md)
 - [Validator](type-aliases/Validator.md)
+- [CharacterTable](type-aliases/CharacterTable.md)
 - [Media](type-aliases/Media.md)
 - [Client](type-aliases/Client.md)
 - [Plugin](type-aliases/Plugin.md)
+- [Secrets](type-aliases/Secrets.md)
 - [Character](type-aliases/Character.md)
 - [CacheOptions](type-aliases/CacheOptions.md)
 - [KnowledgeItem](type-aliases/KnowledgeItem.md)

@@ -6,4 +6,4 @@
 
 ## Defined in
 
-[packages/core/src/memory.ts:10](https://github.com/ai16z/eliza/blob/main/packages/core/src/memory.ts#L10)
+[packages/core/src/memory.ts:10](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/memory.ts#L10)

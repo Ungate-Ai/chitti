@@ -46,4 +46,4 @@ Text content
 
 ## Defined in
 
-[packages/core/src/types.ts:521](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L521)
+[packages/core/src/types.ts:534](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L534)

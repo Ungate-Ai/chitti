@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[packages/core/src/types.ts:849](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L849)
+[packages/core/src/types.ts:869](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L869)
 
 ***
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[packages/core/src/types.ts:854](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L854)
+[packages/core/src/types.ts:874](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L874)
 
 ***
 
@@ -68,4 +68,4 @@
 
 #### Defined in
 
-[packages/core/src/types.ts:860](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L860)
+[packages/core/src/types.ts:880](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L880)

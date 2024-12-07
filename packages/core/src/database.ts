@@ -290,6 +290,14 @@ export abstract class DatabaseAdapter<DB = any> implements IDatabaseAdapter {
      */
     abstract getParticipantsForAccount(userId: UUID): Promise<Participant[]>;
 
+    abstract getTwitterAccessToken(agentId: string): Promise<string>;
+
+  // Abstract method for getting Twitter Refresh Token
+  abstract getTwitterRefreshToken(agentId: string): Promise<string>;
+
+  // Abstract method for updating Twitter Access Token
+  abstract updateTwitterAccessToken(agentId: string, newAccessToken: string): Promise<void>;
+
     /**
      * Retrieves participants for a specific room.
      * @param roomId The UUID of the room for which to retrieve participants.

@@ -16,4 +16,4 @@
 
 ## Defined in
 
-[packages/core/src/models.ts:242](https://github.com/ai16z/eliza/blob/main/packages/core/src/models.ts#L242)
+[packages/core/src/models.ts:242](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/models.ts#L242)

@@ -22,4 +22,4 @@ string
 
 ## Defined in
 
-[packages/core/src/messages.ts:60](https://github.com/ai16z/eliza/blob/main/packages/core/src/messages.ts#L60)
+[packages/core/src/messages.ts:60](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/messages.ts#L60)

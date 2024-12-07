@@ -14,7 +14,7 @@ Whether to always run
 
 #### Defined in
 
-[packages/core/src/types.ts:414](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L414)
+[packages/core/src/types.ts:414](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L414)
 
 ***
 
@@ -26,7 +26,7 @@ Detailed description
 
 #### Defined in
 
-[packages/core/src/types.ts:417](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L417)
+[packages/core/src/types.ts:417](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L417)
 
 ***
 
@@ -38,7 +38,7 @@ Similar evaluator descriptions
 
 #### Defined in
 
-[packages/core/src/types.ts:420](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L420)
+[packages/core/src/types.ts:420](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L420)
 
 ***
 
@@ -50,7 +50,7 @@ Example evaluations
 
 #### Defined in
 
-[packages/core/src/types.ts:423](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L423)
+[packages/core/src/types.ts:423](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L423)
 
 ***
 
@@ -62,7 +62,7 @@ Handler function
 
 #### Defined in
 
-[packages/core/src/types.ts:426](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L426)
+[packages/core/src/types.ts:426](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L426)
 
 ***
 
@@ -74,7 +74,7 @@ Evaluator name
 
 #### Defined in
 
-[packages/core/src/types.ts:429](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L429)
+[packages/core/src/types.ts:429](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L429)
 
 ***
 
@@ -86,4 +86,4 @@ Validation function
 
 #### Defined in
 
-[packages/core/src/types.ts:432](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L432)
+[packages/core/src/types.ts:432](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L432)

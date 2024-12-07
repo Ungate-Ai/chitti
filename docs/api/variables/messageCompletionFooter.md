@@ -6,4 +6,4 @@
 
 ## Defined in
 
-[packages/core/src/parsing.ts:3](https://github.com/ai16z/eliza/blob/main/packages/core/src/parsing.ts#L3)
+[packages/core/src/parsing.ts:3](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/parsing.ts#L3)

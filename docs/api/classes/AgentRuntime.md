@@ -83,7 +83,7 @@ Custom fetch function to use for making requests.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:202](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L202)
+[packages/core/src/runtime.ts:202](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L202)
 
 ## Properties
 
@@ -99,7 +99,7 @@ The ID of the agent
 
 #### Defined in
 
-[packages/core/src/runtime.ts:62](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L62)
+[packages/core/src/runtime.ts:62](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L62)
 
 ***
 
@@ -115,7 +115,7 @@ The base URL of the server where the agent's requests are processed.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:66](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L66)
+[packages/core/src/runtime.ts:66](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L66)
 
 ***
 
@@ -131,7 +131,7 @@ The database adapter used for interacting with the database.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:71](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L71)
+[packages/core/src/runtime.ts:71](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L71)
 
 ***
 
@@ -147,7 +147,7 @@ Authentication token used for securing requests.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:76](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L76)
+[packages/core/src/runtime.ts:76](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L76)
 
 ***
 
@@ -163,7 +163,7 @@ Custom actions that the agent can perform.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:81](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L81)
+[packages/core/src/runtime.ts:81](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L81)
 
 ***
 
@@ -179,7 +179,7 @@ Evaluators used to assess and guide the agent's responses.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:86](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L86)
+[packages/core/src/runtime.ts:86](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L86)
 
 ***
 
@@ -195,7 +195,7 @@ Context providers used to provide context for message generation.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:91](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L91)
+[packages/core/src/runtime.ts:91](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L91)
 
 ***
 
@@ -209,7 +209,7 @@ Context providers used to provide context for message generation.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:93](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L93)
+[packages/core/src/runtime.ts:93](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L93)
 
 ***
 
@@ -225,7 +225,7 @@ The model to use for generateText.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:98](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L98)
+[packages/core/src/runtime.ts:98](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L98)
 
 ***
 
@@ -260,7 +260,7 @@ Some environments may not have access to the global fetch function and need a cu
 
 #### Defined in
 
-[packages/core/src/runtime.ts:104](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L104)
+[packages/core/src/runtime.ts:104](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L104)
 
 ***
 
@@ -276,7 +276,7 @@ The character to use for the agent
 
 #### Defined in
 
-[packages/core/src/runtime.ts:109](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L109)
+[packages/core/src/runtime.ts:109](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L109)
 
 ***
 
@@ -292,7 +292,7 @@ Store messages that are sent and received by the agent.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:114](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L114)
+[packages/core/src/runtime.ts:114](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L114)
 
 ***
 
@@ -308,7 +308,7 @@ Store and recall descriptions of users based on conversations.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:119](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L119)
+[packages/core/src/runtime.ts:119](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L119)
 
 ***
 
@@ -324,7 +324,7 @@ Manage the creation and recall of static information (documents, historical game
 
 #### Defined in
 
-[packages/core/src/runtime.ts:124](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L124)
+[packages/core/src/runtime.ts:124](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L124)
 
 ***
 
@@ -340,7 +340,7 @@ Hold large documents that can be referenced
 
 #### Defined in
 
-[packages/core/src/runtime.ts:129](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L129)
+[packages/core/src/runtime.ts:129](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L129)
 
 ***
 
@@ -356,7 +356,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:134](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L134)
+[packages/core/src/runtime.ts:134](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L134)
 
 ***
 
@@ -370,7 +370,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:136](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L136)
+[packages/core/src/runtime.ts:136](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L136)
 
 ***
 
@@ -380,7 +380,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:137](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L137)
+[packages/core/src/runtime.ts:137](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L137)
 
 ***
 
@@ -394,7 +394,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:138](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L138)
+[packages/core/src/runtime.ts:138](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L138)
 
 ## Methods
 
@@ -416,7 +416,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:140](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L140)
+[packages/core/src/runtime.ts:140](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L140)
 
 ***
 
@@ -438,7 +438,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:155](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L155)
+[packages/core/src/runtime.ts:155](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L155)
 
 ***
 
@@ -464,7 +464,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:159](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L159)
+[packages/core/src/runtime.ts:159](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L159)
 
 ***
 
@@ -486,7 +486,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:168](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L168)
+[packages/core/src/runtime.ts:168](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L168)
 
 ***
 
@@ -504,7 +504,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:359](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L359)
+[packages/core/src/runtime.ts:359](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L359)
 
 ***
 
@@ -526,7 +526,7 @@ Searchable document fragments
 
 #### Defined in
 
-[packages/core/src/runtime.ts:423](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L423)
+[packages/core/src/runtime.ts:423](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L423)
 
 ***
 
@@ -548,7 +548,7 @@ The number of recent messages to be kept in memory.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:445](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L445)
+[packages/core/src/runtime.ts:445](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L445)
 
 ***
 
@@ -574,7 +574,7 @@ The action to register.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:453](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L453)
+[packages/core/src/runtime.ts:453](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L453)
 
 ***
 
@@ -596,7 +596,7 @@ The evaluator to register.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:462](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L462)
+[packages/core/src/runtime.ts:462](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L462)
 
 ***
 
@@ -618,7 +618,7 @@ The context provider to register.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:470](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L470)
+[packages/core/src/runtime.ts:470](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L470)
 
 ***
 
@@ -650,7 +650,7 @@ The message to process.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:479](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L479)
+[packages/core/src/runtime.ts:479](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L479)
 
 ***
 
@@ -686,7 +686,7 @@ The results of the evaluation.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:556](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L556)
+[packages/core/src/runtime.ts:556](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L556)
 
 ***
 
@@ -718,7 +718,7 @@ An error if the participant cannot be added.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:626](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L626)
+[packages/core/src/runtime.ts:626](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L626)
 
 ***
 
@@ -754,7 +754,7 @@ The user name to ensure the existence of.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:642](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L642)
+[packages/core/src/runtime.ts:642](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L642)
 
 ***
 
@@ -778,7 +778,7 @@ The user name to ensure the existence of.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:662](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L662)
+[packages/core/src/runtime.ts:662](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L662)
 
 ***
 
@@ -808,7 +808,7 @@ The user name to ensure the existence of.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:679](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L679)
+[packages/core/src/runtime.ts:679](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L679)
 
 ***
 
@@ -839,7 +839,7 @@ An error if the room cannot be created.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:715](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L715)
+[packages/core/src/runtime.ts:715](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L715)
 
 ***
 
@@ -869,7 +869,7 @@ The state of the agent.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:728](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L728)
+[packages/core/src/runtime.ts:728](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L728)
 
 ***
 
@@ -891,4 +891,4 @@ The state of the agent.
 
 #### Defined in
 
-[packages/core/src/runtime.ts:1173](https://github.com/ai16z/eliza/blob/main/packages/core/src/runtime.ts#L1173)
+[packages/core/src/runtime.ts:1173](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/runtime.ts#L1173)

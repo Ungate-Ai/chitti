@@ -12,7 +12,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:207](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L207)
+[packages/core/src/types.ts:207](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L207)
 
 ***
 
@@ -22,7 +22,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:208](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L208)
+[packages/core/src/types.ts:208](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L208)
 
 ***
 
@@ -32,7 +32,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:209](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L209)
+[packages/core/src/types.ts:209](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L209)
 
 ***
 
@@ -42,7 +42,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:210](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L210)
+[packages/core/src/types.ts:210](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L210)
 
 ***
 
@@ -52,7 +52,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:211](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L211)
+[packages/core/src/types.ts:211](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L211)
 
 ***
 
@@ -62,7 +62,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:212](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L212)
+[packages/core/src/types.ts:212](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L212)
 
 ***
 
@@ -72,7 +72,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:213](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L213)
+[packages/core/src/types.ts:213](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L213)
 
 ***
 
@@ -82,7 +82,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:214](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L214)
+[packages/core/src/types.ts:214](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L214)
 
 ***
 
@@ -92,7 +92,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:215](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L215)
+[packages/core/src/types.ts:215](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L215)
 
 ***
 
@@ -102,7 +102,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:216](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L216)
+[packages/core/src/types.ts:216](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L216)
 
 ***
 
@@ -112,7 +112,7 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:217](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L217)
+[packages/core/src/types.ts:217](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L217)
 
 ***
 
@@ -122,4 +122,4 @@ Available model providers
 
 #### Defined in
 
-[packages/core/src/types.ts:218](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L218)
+[packages/core/src/types.ts:218](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L218)

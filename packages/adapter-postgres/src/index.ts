@@ -214,6 +214,50 @@ export class PostgresDatabaseAdapter
         return rows.map((row) => row.userId);
     }
 
+    async getTwitterAccessToken(
+        agentId: UUID
+    ): Promise<{ twitterAccessToken: string }> {
+        try {
+            const result = await this.query(
+                'SELECT "twitterAccessToken" FROM public.twitter_credentials WHERE "agentId" = $1',
+                [agentId]
+            );
+            const { twitterAccessToken } = result.rows[0];
+            return { twitterAccessToken };
+        } catch (error) {
+            throw error; 
+        }
+    }
+
+    async getTwitterRefreshToken(
+        agentId: UUID
+    ): Promise<{ twitterRefreshToken: string }> {
+        try {
+            const result = await this.query(
+                'SELECT "twitterRefreshToken" FROM public.twitter_credentials WHERE "agentId" = $1',
+                [agentId]
+            );
+            const { twitterRefreshToken } = result.rows[0];
+            return { twitterRefreshToken };
+        } catch (error) {
+            throw error; 
+        }
+    }
+
+    async updateTwitterAccessToken(
+        agentId: UUID,
+        newAccessToken: string
+    ): Promise<void> {
+        try {
+            await this.query(
+                'UPDATE public.twitter_credentials SET "twitterAccessToken" = $1 WHERE "agentId" = $2',
+                [newAccessToken, agentId]
+            );
+        } catch (error) {
+            throw error; 
+        }
+    }
+
     async getAccountById(userId: UUID): Promise<Account | null> {
         const { rows } = await this.query(
             "SELECT * FROM accounts WHERE id = $1",

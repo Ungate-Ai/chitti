@@ -12,4 +12,4 @@
 
 ## Defined in
 
-[packages/core/src/types.ts:903](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L903)
+[packages/core/src/types.ts:923](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L923)

@@ -20,4 +20,4 @@ True if the environment variable exists
 
 ## Defined in
 
-[packages/core/src/settings.ts:102](https://github.com/ai16z/eliza/blob/main/packages/core/src/settings.ts#L102)
+[packages/core/src/settings.ts:102](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/settings.ts#L102)

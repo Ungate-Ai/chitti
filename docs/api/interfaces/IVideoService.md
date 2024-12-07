@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[packages/core/src/types.ts:927](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L927)
+[packages/core/src/types.ts:947](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L947)
 
 ## Methods
 
@@ -48,7 +48,7 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:932](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L932)
+[packages/core/src/types.ts:952](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L952)
 
 ***
 
@@ -66,7 +66,7 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:1033](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L1033)
+[packages/core/src/types.ts:1053](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L1053)
 
 ***
 
@@ -84,7 +84,7 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:1034](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L1034)
+[packages/core/src/types.ts:1054](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L1054)
 
 ***
 
@@ -102,7 +102,7 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:1035](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L1035)
+[packages/core/src/types.ts:1055](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L1055)
 
 ***
 
@@ -122,4 +122,4 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:1036](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L1036)
+[packages/core/src/types.ts:1056](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L1056)

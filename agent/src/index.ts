@@ -5,6 +5,7 @@ import { DiscordClientInterface } from "@ai16z/client-discord";
 import { AutoClientInterface } from "@ai16z/client-auto";
 import { TelegramClientInterface } from "@ai16z/client-telegram";
 import { TwitterClientInterface } from "@ai16z/client-twitter";
+import { TwitterAPIClientInterface } from "@ai16z/client-twitter-api";
 import {
     DbCacheAdapter,
     defaultCharacter,
@@ -227,6 +228,11 @@ export async function initializeClients(
     if (clientTypes.includes("twitter")) {
         const twitterClients = await TwitterClientInterface.start(runtime);
         clients.push(twitterClients);
+    }
+
+    if (clientTypes.includes("twitter-api")) {
+        const twitterAPIClients = await TwitterAPIClientInterface.start(runtime);
+        clients.push(twitterAPIClients);
     }
 
     if (character.plugins?.length > 0) {
@@ -593,7 +599,7 @@ if (process.env.AGENT_RUNTIME_MANAGEMENT === "true") {
     );
 
     const agentPort = settings.AGENT_PORT
-        ? parseInt(settings.AGENT_PORT)
+        ? parseInt(settings.AGENT_PORT) as number
         : 3001;
     //if agent port is 0, it means we want to use a random port
     const server = app.listen(agentPort, () => {

@@ -39,6 +39,7 @@ PACKAGES=(
     "client-discord"
     "client-telegram"
     "client-twitter"
+    "client-twitter-api"
 )
 
 # Build packages in specified order

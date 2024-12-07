@@ -1,0 +1,24 @@
+{
+    "name": "@ai16z/client-twitter-api",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "dependencies": {
+        "@ai16z/eliza": "workspace:*",
+        "glob": "11.0.0",
+        "agent-twitter-client": "0.0.13",
+        "twitter-api-v2": "^1.18.2"
+    },
+    "devDependencies": {
+        "@ai16z/eliza": "workspace:*",
+        "tsup": "^8.3.5"
+    },
+    "scripts": {
+        "build": "tsup --format esm --dts",
+        "dev": "tsup --watch"
+    },
+    "peerDependencies": {
+        "whatwg-url": "7.1.0"
+    }
+}

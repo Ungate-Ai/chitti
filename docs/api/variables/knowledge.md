@@ -44,4 +44,4 @@
 
 ## Defined in
 
-[packages/core/src/knowledge.ts:116](https://github.com/ai16z/eliza/blob/main/packages/core/src/knowledge.ts#L116)
+[packages/core/src/knowledge.ts:116](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/knowledge.ts#L116)

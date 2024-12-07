@@ -52,4 +52,4 @@ Optional clients
 
 ## Defined in
 
-[packages/core/src/types.ts:555](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L555)
+[packages/core/src/types.ts:568](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L568)

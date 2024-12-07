@@ -14,7 +14,7 @@ Optional unique identifier
 
 #### Defined in
 
-[packages/core/src/types.ts:306](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L306)
+[packages/core/src/types.ts:306](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L306)
 
 ***
 
@@ -26,7 +26,7 @@ Associated user ID
 
 #### Defined in
 
-[packages/core/src/types.ts:309](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L309)
+[packages/core/src/types.ts:309](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L309)
 
 ***
 
@@ -38,7 +38,7 @@ Associated agent ID
 
 #### Defined in
 
-[packages/core/src/types.ts:312](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L312)
+[packages/core/src/types.ts:312](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L312)
 
 ***
 
@@ -50,7 +50,7 @@ Optional creation timestamp
 
 #### Defined in
 
-[packages/core/src/types.ts:315](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L315)
+[packages/core/src/types.ts:315](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L315)
 
 ***
 
@@ -62,7 +62,7 @@ Memory content
 
 #### Defined in
 
-[packages/core/src/types.ts:318](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L318)
+[packages/core/src/types.ts:318](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L318)
 
 ***
 
@@ -74,7 +74,7 @@ Optional embedding vector
 
 #### Defined in
 
-[packages/core/src/types.ts:321](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L321)
+[packages/core/src/types.ts:321](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L321)
 
 ***
 
@@ -86,7 +86,7 @@ Associated room ID
 
 #### Defined in
 
-[packages/core/src/types.ts:324](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L324)
+[packages/core/src/types.ts:324](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L324)
 
 ***
 
@@ -98,7 +98,7 @@ Whether memory is unique
 
 #### Defined in
 
-[packages/core/src/types.ts:327](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L327)
+[packages/core/src/types.ts:327](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L327)
 
 ***
 
@@ -110,4 +110,4 @@ Embedding similarity score
 
 #### Defined in
 
-[packages/core/src/types.ts:330](https://github.com/ai16z/eliza/blob/main/packages/core/src/types.ts#L330)
+[packages/core/src/types.ts:330](https://github.com/Ungate-Ai/chitti/blob/main/packages/core/src/types.ts#L330)

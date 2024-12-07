@@ -2,6 +2,7 @@
     "name": "eliza",
     "scripts": {
         "preinstall": "npx only-allow pnpm",
+        "build-win": "powershell -ExecutionPolicy Bypass -File ./scripts/build.ps1",
         "build": "bash ./scripts/build.sh",
         "build-docs": "pnpm --dir docs build",
         "start:all": "pnpm --filter \"@ai16z/agent\" start:all --isRoot",
