@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-pv
+spec:
+  capacity:
+    storage: 2Gi  
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce  
+  persistentVolumeReclaimPolicy: Retain  
+  storageClassName: manual
+  hostPath:
+    path: /tmp/jenkins_home  
+    type: DirectoryOrCreate  

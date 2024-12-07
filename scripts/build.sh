@@ -42,6 +42,10 @@ PACKAGES=(
     "client-twitter-api"
 )
 
+echo -e "\033[1mLinking dependencies...\033[0m"
+pnpm install
+echo -e "\033[1;32mDependencies linked successfully.\033[0m\n"
+
 # Build packages in specified order
 for package in "${PACKAGES[@]}"; do
     package_path="packages/$package"
@@ -55,7 +59,7 @@ for package in "${PACKAGES[@]}"; do
     cd "$package_path" || continue
 
     if [ -f "package.json" ]; then
-        if npm run build; then
+        if pnpm run build; then
             echo -e "\033[1;32mSuccessfully built $package\033[0m\n"
         else
             echo -e "\033[1;31mFailed to build $package\033[0m"
