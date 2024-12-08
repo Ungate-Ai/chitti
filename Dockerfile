@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY pnpm-workspace.yaml package.json .npmrc tsconfig.json pnpm-lock.yaml /app/
 
-RUN pnpm install --frozen-lockfile --force
+RUN pnpm install --frozen-lockfile --force --reporter=silent
 
 COPY packages /app/packages
 COPY agent /app/agent
@@ -16,7 +16,7 @@ COPY scripts /app/scripts
 COPY .env /app/.env
 COPY .env /app/agent/.env
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libnss3 \
     libnspr4 \
     libdbus-1-3 \
@@ -31,11 +31,10 @@ RUN apt-get update && apt-get install -y \
     libxrandr2 \
     libgbm1 \
     libasound2 \
-    libatspi2.0-0
+    libatspi2.0-0 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pnpm exec playwright install
-
-WORKDIR /app
 
 RUN pnpm run build
 
