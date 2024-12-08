@@ -42,47 +42,6 @@ export class SupabaseDatabaseAdapter extends DatabaseAdapter {
         return data as Participant[];
     }
 
-    async getTwitterAccessToken(agentId: string): Promise<string> {
-        return new Promise((resolve, reject) => {
-          this.db.get(
-            'SELECT twitterAccessToken FROM twitter_credentials WHERE agentId = ?',
-            [agentId],
-            (err, row) => {
-              if (err) reject(err);
-              else resolve(row ? row.twitterAccessToken : null);
-            }
-          );
-        });
-      }
-    
-      // Implementing getTwitterRefreshToken for SQLite
-      async getTwitterRefreshToken(agentId: string): Promise<string> {
-        return new Promise((resolve, reject) => {
-          this.db.get(
-            'SELECT twitterRefreshToken FROM twitter_credentials WHERE agentId = ?',
-            [agentId],
-            (err, row) => {
-              if (err) reject(err);
-              else resolve(row ? row.twitterRefreshToken : null);
-            }
-          );
-        });
-      }
-    
-      // Implementing updateTwitterAccessToken for SQLite
-      async updateTwitterAccessToken(agentId: string, newAccessToken: string): Promise<void> {
-        return new Promise((resolve, reject) => {
-          this.db.run(
-            'UPDATE twitter_credentials SET twitterAccessToken = ? WHERE agentId = ?',
-            [newAccessToken, agentId],
-            (err) => {
-              if (err) reject(err);
-              else resolve();
-            }
-          );
-        });
-      }
-
     async getParticipantUserState(
         roomId: UUID,
         userId: UUID

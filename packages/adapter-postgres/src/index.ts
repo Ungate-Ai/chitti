@@ -216,14 +216,14 @@ export class PostgresDatabaseAdapter
 
     async getTwitterAccessToken(
         agentId: UUID
-    ): Promise<{ twitterAccessToken: string }> {
+    ): Promise<string> {
         try {
             const result = await this.query(
                 'SELECT "twitterAccessToken" FROM public.twitter_credentials WHERE "agentId" = $1',
                 [agentId]
             );
             const { twitterAccessToken } = result.rows[0];
-            return { twitterAccessToken };
+            return twitterAccessToken;
         } catch (error) {
             throw error; 
         }
@@ -231,14 +231,14 @@ export class PostgresDatabaseAdapter
 
     async getTwitterRefreshToken(
         agentId: UUID
-    ): Promise<{ twitterRefreshToken: string }> {
+    ): Promise<string> {
         try {
             const result = await this.query(
                 'SELECT "twitterRefreshToken" FROM public.twitter_credentials WHERE "agentId" = $1',
                 [agentId]
             );
             const { twitterRefreshToken } = result.rows[0];
-            return { twitterRefreshToken };
+            return twitterRefreshToken;
         } catch (error) {
             throw error; 
         }
@@ -246,12 +246,13 @@ export class PostgresDatabaseAdapter
 
     async updateTwitterAccessToken(
         agentId: UUID,
-        newAccessToken: string
+        newAccessToken: string,
+        newRefreshToken: string
     ): Promise<void> {
         try {
             await this.query(
-                'UPDATE public.twitter_credentials SET "twitterAccessToken" = $1 WHERE "agentId" = $2',
-                [newAccessToken, agentId]
+                'UPDATE public.twitter_credentials SET "twitterAccessToken" = $1, "twitterRefreshToken" = $2 WHERE "agentId" = $3',
+                [newAccessToken, newRefreshToken, agentId]
             );
         } catch (error) {
             throw error; 

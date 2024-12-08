@@ -225,12 +225,12 @@ export async function initializeClients(
         if (telegramClient) clients.push(telegramClient);
     }
 
-    if (clientTypes.includes("twitter")) {
-        const twitterClients = await TwitterClientInterface.start(runtime);
-        clients.push(twitterClients);
-    }
+    // if (clientTypes.includes("twitter")) {
+    //     const twitterClients = await TwitterClientInterface.start(runtime);
+    //     clients.push(twitterClients);
+    // }
 
-    if (clientTypes.includes("twitter-api")) {
+    if (clientTypes.includes("twitter")) {
         const twitterAPIClients = await TwitterAPIClientInterface.start(runtime);
         clients.push(twitterAPIClients);
     }
@@ -498,7 +498,7 @@ export async function loadCharactersFromDb(
 
                             try {
                                 decryptedSecrets[key] = encryptionUtil.decrypt({
-                                    encryptedText: encryptedValue,
+                                    encryptedText: encryptedValue as any,
                                     iv,
                                 });
                             } catch (error) {

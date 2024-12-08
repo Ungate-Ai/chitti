@@ -848,7 +848,7 @@ export interface IDatabaseAdapter {
 getTwitterRefreshToken(agentId: string): Promise<string>;
 
   // Abstract method for updating Twitter Access Token
-updateTwitterAccessToken(agentId: string, newAccessToken: string): Promise<void>;
+updateTwitterAccessToken(agentId: string, newAccessToken: string, newRefreshToken:string): Promise<void>;
 
     getParticipantsForRoom(roomId: UUID): Promise<UUID[]>;
 

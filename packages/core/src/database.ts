@@ -296,7 +296,7 @@ export abstract class DatabaseAdapter<DB = any> implements IDatabaseAdapter {
   abstract getTwitterRefreshToken(agentId: string): Promise<string>;
 
   // Abstract method for updating Twitter Access Token
-  abstract updateTwitterAccessToken(agentId: string, newAccessToken: string): Promise<void>;
+  abstract updateTwitterAccessToken(agentId: string, newAccessToken: string, newRefreshToken:string): Promise<void>;
 
     /**
      * Retrieves participants for a specific room.

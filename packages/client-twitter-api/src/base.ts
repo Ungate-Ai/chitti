@@ -10,7 +10,7 @@ import {
     stringToUuid,
     UUID,
 } from "@ai16z/eliza";
-import { TwitterApi } from 'twitter-api-v2';
+import { TwitterApi } from "twitter-api-v2";
 import { EventEmitter } from "events";
 import fs from "fs";
 import path from "path";
@@ -82,7 +82,7 @@ class RequestQueue {
             const now = Math.floor(Date.now() / 1000);
             const waitTime = (this.rateLimitReset - now) * 1000 + 1000; // Add 1 second buffer
             console.log(`Waiting for ${waitTime}ms before retrying...`);
-            await new Promise(resolve => setTimeout(resolve, waitTime));
+            await new Promise((resolve) => setTimeout(resolve, waitTime));
             this.rateLimitReset = null;
         } else {
             // If no reset time provided, use exponential backoff
@@ -105,18 +105,18 @@ export type Tweet = {
     mentions: any[];
     photos: any[];
     thread: {
-        type: 'reply' | 'retweet' | 'quote',
-        tweet: Tweet
-    }[]; 
+        type: "reply" | "retweet" | "quote";
+        tweet: Tweet;
+    }[];
     urls: string[];
     videos: any[];
     timestamp: number;
 };
 
 export enum SearchMode {
-    Latest = 'Latest',
-    Top = 'Top'
-};
+    Latest = "Latest",
+    Top = "Top",
+}
 
 export class ClientBase extends EventEmitter {
     protected isReady: boolean = false;
@@ -150,37 +150,46 @@ export class ClientBase extends EventEmitter {
             await this.readyPromise;
         }
         if (!this.twitterUsername || !this.twitterUserId) {
-            throw new Error('Twitter client not properly initialized');
+            throw new Error("Twitter client not properly initialized");
         }
     }
 
     protected async getAuthenticatedUserInfo() {
         return await this.executeWithTokenRefresh(async () => {
             const me = await this.twitterClient.v2.me({
-                "user.fields": ['username', 'name', 'id', 'description']
+                "user.fields": ["username", "name", "id", "description"],
             });
             return {
                 id: me.data.id,
                 username: me.data.username,
-                name: me.data.name
+                name: me.data.name,
             };
         });
     }
 
     private async refreshTwitterToken(): Promise<void> {
         try {
-            const baseClient = new TwitterApi({ 
-                clientId: this.runtime.getSetting("TWITTER_CLIENT_ID"), 
-                clientSecret: this.runtime.getSetting("TWITTER_CLIENT_SECRET") 
+            const baseClient = new TwitterApi({
+                clientId: this.runtime.getSetting("TWITTER_CLIENT_ID"),
+                clientSecret: this.runtime.getSetting("TWITTER_CLIENT_SECRET"),
             });
 
             //#db Bring a database connection here and fetch the refresh token
-            const existingRefreshToken = this.runtime.getSetting("TWITTER_REFRESH_TOKEN") ?? 'OGVpM21fWVBkckloVDB2Q2taUEE5M1doWjRDalJPNXBXNHRSSEdiLUlpZklJOjE3MzE2ODAxMzAyNzk6MTowOnJ0OjE';
-            const { 
-                client: refreshedClient, 
-                accessToken, 
-                refreshToken: newRefreshToken 
+            const existingRefreshToken =
+                await this.runtime.databaseAdapter.getTwitterRefreshToken(
+                    this.runtime.agentId
+                );
+            const {
+                client: refreshedClient,
+                accessToken,
+                refreshToken: newRefreshToken,
             } = await baseClient.refreshOAuth2Token(existingRefreshToken);
+
+            await this.runtime.databaseAdapter.updateTwitterAccessToken(
+                this.runtime.agentId,
+                accessToken,
+                newRefreshToken
+            );
 
             this.twitterClient = refreshedClient;
             ClientBase._twitterClient = refreshedClient;
@@ -195,21 +204,33 @@ export class ClientBase extends EventEmitter {
         }
     }
 
-    private async executeWithTokenRefresh<T>(operation: () => Promise<T>): Promise<T> {
+    private async executeWithTokenRefresh<T>(
+        operation: () => Promise<T>
+    ): Promise<T> {
         try {
             return await operation();
         } catch (error) {
             console.log("Operation failed:", error.code, error.message);
-            if (error.code === 401 || (error.message && error.message.includes('token'))) {
+            if (
+                error.code === 401 ||
+                (error.message && error.message.includes("token"))
+            ) {
                 console.log("Token expired, attempting refresh...");
                 await this.refreshTwitterToken();
                 return await operation();
             }
             if (error.code === 429) {
-                const resetTime = error.rateLimit?.reset || Math.floor(Date.now() / 1000) + 900; // 15 min default
-                const waitTime = (resetTime - Math.floor(Date.now() / 1000)) * 1000;
-                console.log(`Rate limited. Waiting ${waitTime}ms before retry...`);
-                await new Promise(resolve => setTimeout(resolve, waitTime + 1000));
+                const resetTime =
+                    error.rateLimit?.reset ||
+                    Math.floor(Date.now() / 1000) + 900; // 15 min default
+                const waitTime =
+                    (resetTime - Math.floor(Date.now() / 1000)) * 1000;
+                console.log(
+                    `Rate limited. Waiting ${waitTime}ms before retry...`
+                );
+                await new Promise((resolve) =>
+                    setTimeout(resolve, waitTime + 1000)
+                );
                 return await operation();
             }
             throw error;
@@ -260,10 +281,11 @@ export class ClientBase extends EventEmitter {
         if (cachedTweet) {
             return cachedTweet;
         }
-    
+
         const result = await this.executeWithTokenRefresh(async () => {
             //const tweetResult = await this.twitterClient.v2.get(`tweets/${tweetId}`);
-            const tweetResult = await this.twitterClient.v2.singleTweet(tweetId,
+            const tweetResult = await this.twitterClient.v2.singleTweet(
+                tweetId,
                 {
                     "tweet.fields": [
                         "created_at",
@@ -272,45 +294,52 @@ export class ClientBase extends EventEmitter {
                         "entities",
                         "attachments",
                         "referenced_tweets",
-                        "text"
+                        "text",
                     ],
                     "user.fields": ["name", "username"],
-                    "expansions": [
+                    expansions: [
                         "author_id",
                         "attachments.media_keys",
                         "referenced_tweets.id",
-                        "entities.mentions.username"
+                        "entities.mentions.username",
                     ],
                     "media.fields": [
                         "url",
                         "type",
                         "preview_image_url",
-                        "alt_text"
-                    ]
+                        "alt_text",
+                    ],
                 }
             );
             const tweet: Tweet = {
                 id: tweetResult.data.id,
                 text: tweetResult.data.text,
-                conversationId: tweetResult.data.conversation_id || tweetResult.data.id, // Using tweet id as conversation id if not available
+                conversationId:
+                    tweetResult.data.conversation_id || tweetResult.data.id, // Using tweet id as conversation id if not available
                 createdAt: new Date().toISOString(), // Using current time as created_at is not in basic response
                 userId: tweetResult.data.author_id,
                 inReplyToStatusId: tweetResult.data.in_reply_to_user_id,
                 permanentUrl: `https://twitter.com/i/web/status/${tweetResult.data.id}`,
-                username: tweetResult.includes?.users?.find(user => user.id === tweetResult.data.author_id).username,
-                name: tweetResult.includes?.users?.find(user => user.id === tweetResult.data.author_id).name,
+                username: tweetResult.includes?.users?.find(
+                    (user) => user.id === tweetResult.data.author_id
+                ).username,
+                name: tweetResult.includes?.users?.find(
+                    (user) => user.id === tweetResult.data.author_id
+                ).name,
                 hashtags: tweetResult.data.entities.hashtags,
                 mentions: tweetResult.data.entities.mentions,
                 photos: [],
                 thread: [],
                 urls: tweetResult.data.entities.urls.map((url) => url.url),
                 videos: [],
-                timestamp: tweetResult.data.created_at ? new Date(tweetResult.data.created_at).getTime() / 1000 : Date.now() / 1000
+                timestamp: tweetResult.data.created_at
+                    ? new Date(tweetResult.data.created_at).getTime() / 1000
+                    : Date.now() / 1000,
             };
-    
+
             return tweet;
         });
-    
+
         await this.cacheTweet(result);
         return result;
     }
@@ -320,22 +349,30 @@ export class ClientBase extends EventEmitter {
     constructor({ runtime }: { runtime: IAgentRuntime }) {
         super();
         this.runtime = runtime;
-        console.log("ClientBase constructor");
-        if (ClientBase._twitterClient) {
-            this.twitterClient = ClientBase._twitterClient;
-        } else {
-            //#db Bring a database connection here and fetch the access token
-            runtime.databaseAdapter
-            const accessToken = runtime.getSetting("TWITTER_ACCESS_TOKEN") ?? 'RTM2cXhsZV9ISVlXYXJNRmw1RVpYMTlmT1N0eW5lbFlYbkhGX3dzVkl1cW1oOjE3MzE2ODAxMzAyNzk6MToxOmF0OjE';
-            this.twitterAccessToken = accessToken;
-            if (!accessToken) {
-                throw new Error("Twitter access token is required");
-            }
-            this.twitterClient = new TwitterApi(accessToken);
-            ClientBase._twitterClient = this.twitterClient;
-        }
+        console.log("ClientBase");
 
-        this.directions =
+        (async () => {
+            if (ClientBase._twitterClient) {
+                this.twitterClient = ClientBase._twitterClient;
+            } else {
+                console.log(2)
+                const accessToken =
+                    await this.runtime.databaseAdapter.getTwitterAccessToken(
+                        this.runtime.agentId
+                    );
+
+                console.log(accessToken)
+
+                this.twitterAccessToken = accessToken;
+                if (!accessToken) {
+                    throw new Error("Twitter access token is required");
+                }
+                console.log(accessToken);
+                this.twitterClient = new TwitterApi(accessToken);
+                console.log(this.twitterClient || "none");
+                ClientBase._twitterClient = this.twitterClient;
+            }
+            this.directions =
             "- " +
             this.runtime.character.style.all.join("\n- ") +
             "- " +
@@ -359,9 +396,7 @@ export class ClientBase extends EventEmitter {
         }
         const cookiesFilePath = path.join(
             __dirname,
-            "tweetcache/" +
-                'username' +
-                "_cookies.json"
+            "tweetcache/" + "username" + "_cookies.json"
         );
 
         const dir = path.dirname(cookiesFilePath);
@@ -372,129 +407,146 @@ export class ClientBase extends EventEmitter {
         // async initialization
         // Define readyPromise with its resolver
         this.readyPromise = new Promise<void>((resolve, reject) => {
-        (async () => {
-            // initiate twitter client
-            try {
-                await this.executeWithTokenRefresh(async () => {
-                    const me = await this.twitterClient.v2.me({
-                        "user.fields": ['username', 'name', 'id', 'description']
+            (async () => {
+                // initiate twitter client
+                try {
+                    await this.executeWithTokenRefresh(async () => {
+                        const me = await this.twitterClient.v2.me({
+                            "user.fields": [
+                                "username",
+                                "name",
+                                "id",
+                                "description",
+                            ],
+                        });
+                        this.twitterUserId = me.data.id;
+                        console.log("Twitter user ID:", this.twitterUserId);
+                        this.twitterUsername = me.data.username;
+                        console.log("Twitter user Name:", this.twitterUsername);
+                        this.twitterDescription = me.data.description;
+                        console.log(
+                            "Twitter user description:",
+                            this.twitterDescription
+                        );
+                        this.twitterName = me.data.name;
+                        console.log("Twitter Name:", this.twitterName);
                     });
-                    this.twitterUserId = me.data.id;
-                    console.log("Twitter user ID:", this.twitterUserId);
-                    this.twitterUsername = me.data.username;
-                    console.log("Twitter user Name:", this.twitterUsername);
-                    this.twitterDescription = me.data.description;
-                    console.log("Twitter user description:", this.twitterDescription);
-                    this.twitterName = me.data.name;
-                    console.log("Twitter Name:", this.twitterName);
 
-                });
-                
-                const profile = await this.initializeProfile();
-                if (profile) {
-                    console.log("Twitter profile initialized:", profile);
+                    const profile = await this.initializeProfile();
+                    if (profile) {
+                        console.log("Twitter profile initialized:", profile);
 
-                    // Store profile info for use in responses
-                    this.runtime.character = {
-                        ...this.runtime.character,
-                        twitterProfile: {
-                            username: profile.username,
-                            screenName: profile.screenName,
-                            bio: profile.bio,
-                            nicknames: profile.nicknames,
-                        },
-                    };
+                        // Store profile info for use in responses
+                        this.runtime.character = {
+                            ...this.runtime.character,
+                            twitterProfile: {
+                                username: profile.username,
+                                screenName: profile.screenName,
+                                bio: profile.bio,
+                                nicknames: profile.nicknames,
+                            },
+                        };
+                    }
+
+                    await this.populateTimeline();
+                    this.isReady = true;
+                    resolve();
+                    this.onReady();
+                } catch (error) {
+                    console.error("Error initializing Twitter client:", error);
+                    reject(error);
                 }
-
-                await this.populateTimeline();
-                this.isReady = true;
-                resolve();
-                this.onReady();
-            } catch (error) {
-                console.error("Error initializing Twitter client:", error);
-                reject(error);
-            }   
             })();
         });
+        })();
+
+        
     }
+
+    // initializeClientMain COde
 
     async fetchHomeTimeline(count: number): Promise<Tweet[]> {
         await this.ensureReady();
         return await this.executeWithTokenRefresh(async () => {
-
-            try{
-            
-            const homeTimelineResult = await this.twitterClient.v2.homeTimeline({
-                "tweet.fields": [
-                    "created_at",
-                    "conversation_id",
-                    "in_reply_to_user_id",
-                    "entities",
-                    "attachments",
-                    "referenced_tweets",
-                    "text"
-                ],
-                "user.fields": ["name", "username"],
-                "expansions": [
-                    "author_id",
-                    "attachments.media_keys",
-                    "referenced_tweets.id",
-                    "entities.mentions.username"
-                ],
-                "media.fields": [
-                    "url",
-                    "type",
-                    "preview_image_url",
-                    "alt_text"
-                ],
-                max_results: count // Adjust the value as needed
-            });
-
-            console.log('Fetched homeTimeline successfully');
-
-            const tweets = homeTimelineResult.data.data; 
-
-            // Check if the data property exists and is an array
-            if (!Array.isArray(tweets)) {
-                throw new Error('Expected tweets to be an array, but got:', tweets);
-            }
-
-            const mappedTweets:Tweet[] = [];
-
-
-            tweets.forEach(tweet => {
-                // Error handling for missing properties
-                try {
-                    mappedTweets.push({
-                        id: tweet.id,
-                        text: tweet.text,
-                        conversationId: tweet.conversation_id || null,
-                        createdAt: tweet.created_at,
-                        userId: tweet.author_id,
-                        inReplyToStatusId: tweet.in_reply_to_user_id || null,
-                        permanentUrl: `https://twitter.com/${tweet.author_id}/status/${tweet.id}`,
-                        username: null, // Assuming username is available in the response
-                        name:  null, // Assuming name is available in the response
-                        hashtags: tweet.entities?.hashtags || [],
-                        mentions: tweet.entities?.mentions || [],
-                        photos: [],
-                        
-                        // Populate the thread property
-                        thread: [],
-                        
-                        urls: tweet.entities?.urls?.map(url => url.expanded_url) || [],
-                        videos: [],
-                        timestamp: new Date(tweet.created_at).getTime() / 1000
+            try {
+                const homeTimelineResult =
+                    await this.twitterClient.v2.homeTimeline({
+                        "tweet.fields": [
+                            "created_at",
+                            "conversation_id",
+                            "in_reply_to_user_id",
+                            "entities",
+                            "attachments",
+                            "referenced_tweets",
+                            "text",
+                        ],
+                        "user.fields": ["name", "username"],
+                        expansions: [
+                            "author_id",
+                            "attachments.media_keys",
+                            "referenced_tweets.id",
+                            "entities.mentions.username",
+                        ],
+                        "media.fields": [
+                            "url",
+                            "type",
+                            "preview_image_url",
+                            "alt_text",
+                        ],
+                        max_results: count, // Adjust the value as needed
                     });
-                } catch (err) {
-                    console.error('Error mapping tweet:', err);
+
+                console.log("Fetched homeTimeline successfully");
+
+                const tweets = homeTimelineResult.data.data;
+
+                // Check if the data property exists and is an array
+                if (!Array.isArray(tweets)) {
+                    throw new Error(
+                        "Expected tweets to be an array, but got:",
+                        tweets
+                    );
                 }
-            });
 
-            return mappedTweets;
+                const mappedTweets: Tweet[] = [];
 
+                tweets.forEach((tweet) => {
+                    // Error handling for missing properties
+                    try {
+                        mappedTweets.push({
+                            id: tweet.id,
+                            text: tweet.text,
+                            conversationId: tweet.conversation_id || null,
+                            createdAt: tweet.created_at,
+                            userId: tweet.author_id,
+                            inReplyToStatusId:
+                                tweet.in_reply_to_user_id || null,
+                            permanentUrl: `https://twitter.com/${tweet.author_id}/status/${tweet.id}`,
+                            username: null, // Assuming username is available in the response
+                            name: null, // Assuming name is available in the response
+                            hashtags: tweet.entities?.hashtags || [],
+                            mentions: tweet.entities?.mentions || [],
+                            photos: [],
+
+                            // Populate the thread property
+                            thread: [],
+
+                            urls:
+                                tweet.entities?.urls?.map(
+                                    (url) => url.expanded_url
+                                ) || [],
+                            videos: [],
+                            timestamp:
+                                new Date(tweet.created_at).getTime() / 1000,
+                        });
+                    } catch (err) {
+                        console.error("Error mapping tweet:", err);
+                    }
+                });
+
+                return mappedTweets;
             } catch (error) {
-                console.error('Error fetching home timeline:', error);
+                console.error("Error fetching home timeline:", error);
                 throw error;
             }
         });
@@ -504,33 +556,43 @@ export class ClientBase extends EventEmitter {
         query: string,
         maxTweets: number,
         searchMode: SearchMode
-    ): Promise<{tweets: Tweet[]}> {
+    ): Promise<{ tweets: Tweet[] }> {
         return await this.executeWithTokenRefresh(async () => {
             const searchResults = await this.twitterClient.v2.search({
                 query,
                 max_results: maxTweets,
-                "tweet.fields": ['created_at', 'conversation_id', 'in_reply_to_user_id'],
-                "user.fields": ['name', 'username'],
-                "expansions": ['author_id', 'referenced_tweets.id']
+                "tweet.fields": [
+                    "created_at",
+                    "conversation_id",
+                    "in_reply_to_user_id",
+                ],
+                "user.fields": ["name", "username"],
+                expansions: ["author_id", "referenced_tweets.id"],
             });
 
-            const tweets = Array.from(searchResults).map(tweet => ({
+            const tweets = Array.from(searchResults).map((tweet) => ({
                 id: tweet.id,
                 text: tweet.text,
                 conversationId: tweet.conversation_id || tweet.id,
                 createdAt: tweet.created_at || new Date().toISOString(),
-                userId: tweet.author_id || '',
+                userId: tweet.author_id || "",
                 inReplyToStatusId: tweet.in_reply_to_user_id,
                 permanentUrl: `https://twitter.com/i/web/status/${tweet.id}`,
-                username: searchResults.includes?.users?.find(u => u.id === tweet.author_id)?.username,
-                name: searchResults.includes?.users?.find(u => u.id === tweet.author_id)?.name,
+                username: searchResults.includes?.users?.find(
+                    (u) => u.id === tweet.author_id
+                )?.username,
+                name: searchResults.includes?.users?.find(
+                    (u) => u.id === tweet.author_id
+                )?.name,
                 hashtags: [],
                 mentions: [],
                 photos: [],
                 thread: [],
                 urls: [],
                 videos: [],
-                timestamp: tweet.created_at ? new Date(tweet.created_at).getTime() / 1000 : Date.now() / 1000
+                timestamp: tweet.created_at
+                    ? new Date(tweet.created_at).getTime() / 1000
+                    : Date.now() / 1000,
             }));
 
             return { tweets };
@@ -540,7 +602,7 @@ export class ClientBase extends EventEmitter {
     private async populateTimeline() {
         console.log("Populating timeline");
         const cacheFile = "timeline_cache.json";
-    
+
         // Check if the cache file exists
         if (fs.existsSync(cacheFile)) {
             console.log("Cache file exists, reading cached results");
@@ -549,48 +611,51 @@ export class ClientBase extends EventEmitter {
                 fs.readFileSync(cacheFile, "utf-8")
             );
             console.log(`Cached results: ${JSON.stringify(cachedResults)}`);
-    
+
             // Get the existing memories from the database
-            const existingMemories = await this.runtime.messageManager.getMemoriesByRoomIds({
-                agentId: this.runtime.agentId,
-                roomIds: cachedResults.map((tweet) =>
-                    stringToUuid(
-                        tweet.conversationId + "-" + this.runtime.agentId
-                    )
-                ),
-            });
+            const existingMemories =
+                await this.runtime.messageManager.getMemoriesByRoomIds({
+                    agentId: this.runtime.agentId,
+                    roomIds: cachedResults.map((tweet) =>
+                        stringToUuid(
+                            tweet.conversationId + "-" + this.runtime.agentId
+                        )
+                    ),
+                });
             console.log(`Existing memories yes`);
-    
+
             // Create a Set to store the IDs of existing memories
             const existingMemoryIds = new Set(
                 existingMemories.map((memory) => memory.id.toString())
             );
-    
+
             // Check if any of the cached tweets exist in the existing memories
             const someCachedTweetsExist = cachedResults.some((tweet) =>
                 existingMemoryIds.has(tweet.id)
             );
             console.log(`Some cached tweets exist: ${someCachedTweetsExist}`);
-    
+
             if (someCachedTweetsExist) {
                 // Filter out the cached tweets that already exist in the database
                 const tweetsToSave = cachedResults.filter(
                     (tweet) => !existingMemoryIds.has(tweet.id)
                 );
                 console.log(`Tweets to save: ${JSON.stringify(tweetsToSave)}`);
-    
+
                 // Save the missing tweets as memories
                 for (const tweet of tweetsToSave) {
-                    console.log(`Processing tweet to save: ${JSON.stringify(tweet)}`);
+                    console.log(
+                        `Processing tweet to save: ${JSON.stringify(tweet)}`
+                    );
                     const roomId = stringToUuid(
                         tweet.conversationId ??
-                        "default-room-" + this.runtime.agentId
+                            "default-room-" + this.runtime.agentId
                     );
                     const tweetuserId =
                         tweet.userId === this.twitterUserId
                             ? this.runtime.agentId
                             : stringToUuid(tweet.userId);
-    
+
                     await this.runtime.ensureConnection(
                         tweetuserId,
                         roomId,
@@ -598,31 +663,34 @@ export class ClientBase extends EventEmitter {
                         tweet.name,
                         "twitter"
                     );
-    
+
                     const content = {
                         text: tweet.text,
                         url: tweet.permanentUrl,
                         source: "twitter",
                         inReplyTo: tweet.inReplyToStatusId
                             ? stringToUuid(
-                                tweet.inReplyToStatusId + "-" + this.runtime.agentId
-                            )
+                                  tweet.inReplyToStatusId +
+                                      "-" +
+                                      this.runtime.agentId
+                              )
                             : undefined,
                     } as Content;
-    
+
                     elizaLogger.log("Creating memory for tweet", tweet.id);
-    
+
                     // Check if it already exists
-                    const memory = await this.runtime.messageManager.getMemoryById(
-                        stringToUuid(tweet.id + "-" + this.runtime.agentId)
-                    );
+                    const memory =
+                        await this.runtime.messageManager.getMemoryById(
+                            stringToUuid(tweet.id + "-" + this.runtime.agentId)
+                        );
                     if (memory) {
                         elizaLogger.log(
                             "Memory already exists, skipping timeline population"
                         );
                         continue; // Use continue instead of break to process remaining tweets
                     }
-    
+
                     await this.runtime.messageManager.createMemory({
                         id: stringToUuid(tweet.id + "-" + this.runtime.agentId),
                         userId: tweetuserId,
@@ -634,7 +702,7 @@ export class ClientBase extends EventEmitter {
                     });
                     console.log(`Saved tweet memory for ID: ${tweet.id}`);
                 }
-    
+
                 elizaLogger.log(
                     `Populated ${tweetsToSave.length} missing tweets from the cache.`
                 );
@@ -645,7 +713,7 @@ export class ClientBase extends EventEmitter {
         } else {
             console.log("Cache file does not exist.");
         }
-    
+
         // Get the most recent 20 mentions and interactions
         console.log("Fetching recent mentions and interactions");
         const mentionsAndInteractions = await this.fetchSearchTweets(
@@ -653,37 +721,38 @@ export class ClientBase extends EventEmitter {
             20,
             SearchMode.Latest
         );
-    
+
         // Combine the timeline tweets and mentions/interactions
         const allTweets = [...mentionsAndInteractions.tweets];
         console.log(`Fetched tweets: ${JSON.stringify(allTweets)}`);
-    
+
         // Create a Set to store unique tweet IDs
         const tweetIdsToCheck = new Set<string>();
-    
+
         // Add tweet IDs to the Set
         for (const tweet of allTweets) {
             tweetIdsToCheck.add(tweet.id);
         }
-    
+
         // Convert the Set to an array of UUIDs
         const tweetUuids = Array.from(tweetIdsToCheck).map((id) =>
             stringToUuid(id + "-" + this.runtime.agentId)
         );
-    
+
         // Check the existing memories in the database
         console.log("Checking existing memories in the database");
-        const existingMemories = await this.runtime.messageManager.getMemoriesByRoomIds({
-            agentId: this.runtime.agentId,
-            roomIds: tweetUuids,
-        });
+        const existingMemories =
+            await this.runtime.messageManager.getMemoriesByRoomIds({
+                agentId: this.runtime.agentId,
+                roomIds: tweetUuids,
+            });
         console.log(`Existing memories fetched`);
-    
+
         // Create a Set to store the existing memory IDs
         const existingMemoryIds = new Set<UUID>(
             existingMemories.map((memory) => memory.roomId)
         );
-    
+
         // Filter out the tweets that already exist in the database
         const tweetsToSave = allTweets.filter(
             (tweet) =>
@@ -691,15 +760,17 @@ export class ClientBase extends EventEmitter {
                     stringToUuid(tweet.id + "-" + this.runtime.agentId)
                 )
         );
-        console.log(`Tweets to save after checking existing memories: ${JSON.stringify(tweetsToSave)}`);
-    
+        console.log(
+            `Tweets to save after checking existing memories: ${JSON.stringify(tweetsToSave)}`
+        );
+
         await this.runtime.ensureUserExists(
             this.runtime.agentId,
             this.twitterUsername,
             this.runtime.character.name,
             "twitter"
         );
-    
+
         // Save the new tweets as memories
         for (const tweet of tweetsToSave) {
             console.log(`Saving new tweet: ${JSON.stringify(tweet)}`);
@@ -710,7 +781,7 @@ export class ClientBase extends EventEmitter {
                 tweet.userId === this.twitterUserId
                     ? this.runtime.agentId
                     : stringToUuid(tweet.userId);
-    
+
             await this.runtime.ensureConnection(
                 tweetuserId,
                 roomId,
@@ -718,7 +789,7 @@ export class ClientBase extends EventEmitter {
                 tweet.name,
                 "twitter"
             );
-    
+
             const content = {
                 text: tweet.text,
                 url: tweet.permanentUrl,
@@ -727,7 +798,7 @@ export class ClientBase extends EventEmitter {
                     ? stringToUuid(tweet.inReplyToStatusId)
                     : undefined,
             } as Content;
-    
+
             await this.runtime.messageManager.createMemory({
                 id: stringToUuid(tweet.id + "-" + this.runtime.agentId),
                 userId: tweetuserId,
@@ -739,7 +810,7 @@ export class ClientBase extends EventEmitter {
             });
             console.log(`Saved tweet memory for ID: ${tweet.id}`);
         }
-    
+
         // Cache the search results to the file
         fs.writeFileSync(cacheFile, JSON.stringify(allTweets));
         console.log("Cached all tweets to file.");
@@ -753,7 +824,7 @@ export class ClientBase extends EventEmitter {
     //                 cookie.sameSite || "Lax"
     //             }`
     //     );
-        
+
     // }
 
     async saveRequestMessage(message: Memory, state: State) {
@@ -796,18 +867,19 @@ export class ClientBase extends EventEmitter {
         }
 
         try {
-                return {
-                    username,
-                    screenName: name|| this.runtime.character.name,
-                    bio: description ||
-                        typeof this.runtime.character.bio === "string"
-                            ? (this.runtime.character.bio as string)
-                            : this.runtime.character.bio.length > 0
-                              ? this.runtime.character.bio[0]
-                              : "",
-                    nicknames:
-                        this.runtime.character.twitterProfile?.nicknames || [],
-                };
+            return {
+                username,
+                screenName: name || this.runtime.character.name,
+                bio:
+                    description ||
+                    typeof this.runtime.character.bio === "string"
+                        ? (this.runtime.character.bio as string)
+                        : this.runtime.character.bio.length > 0
+                          ? this.runtime.character.bio[0]
+                          : "",
+                nicknames:
+                    this.runtime.character.twitterProfile?.nicknames || [],
+            };
         } catch (error) {
             console.error("Error fetching Twitter profile:", error);
             return {
