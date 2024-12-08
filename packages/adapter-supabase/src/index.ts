@@ -41,7 +41,15 @@ export class SupabaseDatabaseAdapter extends DatabaseAdapter {
 
         return data as Participant[];
     }
-
+    async getTwitterRefreshToken () {
+        return ""
+    }
+    async getTwitterAccessToken () {
+        return ""
+    }
+    async updateTwitterAccessToken (){
+        
+    }
     async getParticipantUserState(
         roomId: UUID,
         userId: UUID

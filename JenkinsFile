@@ -101,6 +101,7 @@ pipeline {
                     }
                     echo "Applying Kubernetes deployment..."
                     sh 'kubectl apply -f k8s/deployment.yaml'
+                    sh 'kubectl rollout restart deployment chitti-deployment'
                 }
             }
         }

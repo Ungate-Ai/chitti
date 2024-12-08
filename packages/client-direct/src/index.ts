@@ -236,9 +236,9 @@ export class DirectClient {
                 );
 
                 if (message) {
-                    res.json([message, response]);
+                    res.json({message, response});
                 } else {
-                    res.json([response]);
+                    res.json({response});
                 }
             }
         );

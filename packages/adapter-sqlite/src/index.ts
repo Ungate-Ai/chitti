@@ -61,7 +61,6 @@ export class SqliteDatabaseAdapter
             | undefined;
         return res?.userState ?? null;
     }
-
     async setParticipantUserState(
         roomId: UUID,
         userId: UUID,
@@ -118,6 +117,14 @@ export class SqliteDatabaseAdapter
         }
     }
 
+    async getTwitterAccessToken (){
+        return "none"
+    }
+    async getTwitterRefreshToken() {
+        return "none"
+    }
+    async updateTwitterAccessToken(){
+    }
     async getActorDetails(params: { roomId: UUID }): Promise<Actor[]> {
         const sql = `
       SELECT a.id, a.name, a.username, a.details

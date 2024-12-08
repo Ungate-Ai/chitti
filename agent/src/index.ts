@@ -384,7 +384,7 @@ const startAgents = async () => {
         rl.question("You: ", async (input) => {
             await handleUserInput(input, agentId);
             if (input.toLowerCase() !== "exit") {
-                chat(); // Loop back to ask another question
+                // chat(); // Loop back to ask another question
             }
         });
     }

@@ -69,7 +69,15 @@ export class SqlJsDatabaseAdapter
         stmt.free();
         return result.userState ?? null;
     }
-
+    async getTwitterAccessToken (){
+        return "none"
+    }
+    async getTwitterRefreshToken () {
+        return "none"
+    }
+    async updateTwitterAccessToken(){
+        
+    }
     async getMemoriesByRoomIds(params: {
         roomIds: UUID[];
         tableName: string;
