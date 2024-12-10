@@ -76,7 +76,11 @@ export class DirectClient {
         interface CustomRequest extends ExpressRequest {
             file: File;
         }
-
+        this.app.get("/health",async (req:express.Request,res:express.Response) =>{
+            res.status(200).json({
+                sucess:true
+            })
+        })
         // Update the route handler to use CustomRequest instead of express.Request
         this.app.post(
             "/:agentId/whisper",

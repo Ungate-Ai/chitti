@@ -561,7 +561,11 @@ if (process.env.AGENT_RUNTIME_MANAGEMENT === "true") {
     app.use(cors());
     app.use(bodyParser.json());
 
-    // This endpoint can be directly called or
+    app.get("/health",async (req:express.Request,res:express.Response) =>{
+        res.status(200).json({
+            sucess:true
+        })
+    })
     app.post(
         "/load/:agentName",
         async (req: ExpressRequest, res: express.Response) => {
