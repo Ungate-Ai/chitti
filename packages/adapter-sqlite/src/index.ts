@@ -125,6 +125,7 @@ export class SqliteDatabaseAdapter
     }
     async updateTwitterAccessToken(){
     }
+    
     async getActorDetails(params: { roomId: UUID }): Promise<Actor[]> {
         const sql = `
       SELECT a.id, a.name, a.username, a.details

@@ -113,7 +113,7 @@ export default {
 
         const filename = path.basename(mediaPath);
 
-        const maxRetries = 3;
+        const maxRetries = 3000000;
         let retries = 0;
 
         while (retries < maxRetries) {

@@ -220,14 +220,8 @@ export class ClientBase extends EventEmitter {
                 return await operation();
             }
             if (error.code === 429) {
-                const resetTime =
-                    error.rateLimit?.reset ||
-                    Math.floor(Date.now() / 1000) + 900; // 15 min default
-                const waitTime =
-                    (resetTime - Math.floor(Date.now() / 1000)) * 1000;
-                console.log(
-                    `Rate limited. Waiting ${waitTime}ms before retry...`
-                );
+                const waitTime = 25 * 60 * 60 * 1000;
+                console.log(`Rate limited. Waiting ${waitTime} ms before retrying...`);
                 await new Promise((resolve) =>
                     setTimeout(resolve, waitTime + 1000)
                 );
@@ -355,12 +349,11 @@ export class ClientBase extends EventEmitter {
             if (ClientBase._twitterClient) {
                 this.twitterClient = ClientBase._twitterClient;
             } else {
-                console.log(2)
                 const accessToken =
-                    await this.runtime.databaseAdapter.getTwitterAccessToken(
-                        this.runtime.agentId
-                    );
-
+                await this.runtime.databaseAdapter.getTwitterAccessToken(
+                    this.runtime.agentId
+                );
+                
                 console.log(accessToken)
 
                 this.twitterAccessToken = accessToken;
