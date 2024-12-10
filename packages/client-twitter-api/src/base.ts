@@ -170,8 +170,8 @@ export class ClientBase extends EventEmitter {
     private async refreshTwitterToken(): Promise<void> {
         try {
             const baseClient = new TwitterApi({
-                clientId: this.runtime.getSetting("TWITTER_CLIENT_ID") || "eElJTXF6OTVUajY0TGhoeUFDTzY6MTpjaQ",
-                clientSecret: this.runtime.getSetting("TWITTER_CLIENT_SECRET") || "403QzZ4-MoGXRfl4xxJ-eAw2UCBoFOdLgCADr6Ar2vShXTyBZt",
+                clientId: this.runtime.getSetting("TWITTER_CLIENT_ID") ,
+                clientSecret: this.runtime.getSetting("TWITTER_CLIENT_SECRET"),
             });
 
             //#db Bring a database connection here and fetch the refresh token
