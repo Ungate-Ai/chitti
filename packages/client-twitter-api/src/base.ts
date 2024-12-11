@@ -207,29 +207,33 @@ export class ClientBase extends EventEmitter {
     private async executeWithTokenRefresh<T>(
         operation: () => Promise<T>
     ): Promise<T> {
-        try {
-            return await operation();
-        } catch (error) {
-            console.log("Operation failed:", error.code, error.message);
-            if (
-                error.code === 401 ||
-                (error.message && error.message.includes("token"))
-            ) {
-                console.log("Token expired, attempting refresh...");
-                await this.refreshTwitterToken();
+        while (true) {
+            try {
                 return await operation();
+            } catch (error) {
+                console.log("Operation failed:", error.code, error.message);
+    
+                if (
+                    error.code === 401 ||
+                    (error.message && error.message.includes("token"))
+                ) {
+                    console.log("Token expired, attempting refresh...");
+                    await this.refreshTwitterToken();
+                    continue;
+                }
+    
+                if (error.code === 429) {
+                    const waitTime = 15 * 60 * 1000; 
+                    console.log(`Rate limited. Waiting ${waitTime} ms before retrying...`);
+                    await new Promise((resolve) => setTimeout(resolve, waitTime));
+                    continue;
+                }
+    
+                throw error;
             }
-            if (error.code === 429) {
-                const waitTime = 25 * 60 * 60 * 1000;
-                console.log(`Rate limited. Waiting ${waitTime} ms before retrying...`);
-                await new Promise((resolve) =>
-                    setTimeout(resolve, waitTime + 1000)
-                );
-                return await operation();
-            }
-            throw error;
         }
     }
+    
 
     async cacheTweet(tweet: Tweet): Promise<void> {
         if (!tweet) {
