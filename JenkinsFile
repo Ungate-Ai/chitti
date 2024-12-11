@@ -38,8 +38,8 @@ pipeline {
                 script {
                     def imageName = "registry.digitalocean.com/ungate/chitti-ungate:development"
                     echo "Building and pushing Docker image..."
-                    def DOCKER_USERNAME = sh(script: "cat /DOCR_USERNAME.env", returnStdout: true).trim()
-                    def DOCR_TOKEN = sh(script: "cat /DOCR_TOKEN.env", returnStdout: true).trim()
+                    def DOCKER_USERNAME = sh(script: "cat /var/jenkins_home/DOCR_USERNAME.env", returnStdout: true).trim()
+                    def DOCR_TOKEN = sh(script: "cat /var/jenkins_home/DOCR_TOKEN.env", returnStdout: true).trim()
                     
                     echo "DOCKER_USERNAME: ${DOCKER_USERNAME}"
                     echo "DOCR_TOKEN is set (but not displayed for security)"
@@ -82,8 +82,8 @@ pipeline {
                     sh 'export KUBECONFIG=${KUBECONFIG}'
                     sh 'kubectl config get-contexts'
                     sh 'kubectl config use-context do-blr1-k8s-ungate-init'
-                    def DOCKER_USERNAME = sh(script: "cat /DOCR_USERNAME.env", returnStdout: true).trim()
-                    def DOCR_TOKEN = sh(script: "cat /DOCR_TOKEN.env", returnStdout: true).trim()
+                    def DOCKER_USERNAME = sh(script: "cat /var/jenkins_home/DOCR_USERNAME.env", returnStdout: true).trim()
+                    def DOCR_TOKEN = sh(script: "cat /var/jenkins_home/DOCR_TOKEN.env", returnStdout: true).trim()
                     echo "DOCKER_USERNAME: ${DOCKER_USERNAME}"
                     echo "DOCR_TOKEN is set (but not displayed for security)"
                     def secretExists = sh(script: 'kubectl get secret docker-secret', returnStatus: true)
