@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-
+ 
         stage('Docker Build and Push') {
             steps {
                 script {
@@ -99,7 +99,7 @@ pipeline {
                     } else {
                         echo "Docker secret already exists."
                     }
-                    echo "Applying Kubernetes deployment..."
+                   echo "Applying Kubernetes deployment..."
                     sh 'kubectl apply -f k8s/deployment.yaml'
                     sh 'kubectl rollout restart deployment chitti-deployment'
                 }
