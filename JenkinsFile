@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        ENV_FILE = "/.env"
-        KUBECONFIG = '/kube8.yaml'
+        ENV_FILE = "/var/jenkins_home/.env"
+        KUBECONFIG = '/var/jenkins_home/kube8.yaml'
     }
 
     stages {
