@@ -35,12 +35,18 @@ spec:
             timeoutSeconds: 5         
             successThreshold: 1       
           imagePullPolicy: Always     
+          volumeMounts:
+            - name: character-config
+              mountPath: /app/characters/kaingaroo.character.json
+              subPath: defaultChar.json
       imagePullSecrets:
         - name: docker-secret
+      volumes:
+        - name: character-config
+          configMap:
+            name: defaultcharacter
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
-
-
