@@ -34,7 +34,6 @@ spec:
             failureThreshold: 10       
             timeoutSeconds: 5         
             successThreshold: 1       
-          imagePullPolicy: Always     
           volumeMounts:
             - name: character-config
               mountPath: /app/characters/kaingaroo.character.json
